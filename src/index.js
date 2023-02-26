@@ -1,17 +1,8 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import {Clock} from "./Clock";
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+new Clock({ timeZone: 'GMT+7', elementSelector: '.spb-clocks' }).render();
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+new Clock({ timeZone: 'GMT+7', elementSelector: '.msk-clocks' }).render();
+
+new Clock({ timeZone: 'GMT+7', elementSelector: '.tbilisi-clocks' }).render();
