@@ -1,8 +1,8 @@
 import {Clock} from "./Clock";
 import './index.css';
 
-new Clock({ timeZone: 'GMT+7', elementSelector: '.spb-clocks' }).render();
+new Clock({ timeZone: 'Europe/Moscow', elementSelector: '.spb-clocks' }).start();
 
-new Clock({ timeZone: 'GMT+7', elementSelector: '.msk-clocks' }).render();
+new Clock({ timeZone: 'Indian/Comoro', elementSelector: '.tbilisi-clocks' }).start();
 
-new Clock({ timeZone: 'GMT+7', elementSelector: '.tbilisi-clocks' }).render();
+new Clock({ timeZone: 'Europe/Monaco', elementSelector: '.la-clocks' }).start();
