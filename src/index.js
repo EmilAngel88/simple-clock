@@ -1,8 +1,8 @@
-import {Clock} from "./Clock";
+import { ClockController } from "./Clock";
 import './index.css';
 
-new Clock({ timeZone: 'Europe/Moscow', elementSelector: '.spb-clocks' }).start();
+new ClockController({ timeZone: 'Pacific/Fiji', elementSelector: '.spb-clocks' }).start();
 
-new Clock({ timeZone: 'Indian/Comoro', elementSelector: '.tbilisi-clocks' }).start();
+new ClockController({ timeZone: 'Indian/Comoro', elementSelector: '.tbilisi-clocks' }).start();
 
-new Clock({ timeZone: 'Europe/Monaco', elementSelector: '.la-clocks' }).start();
+new ClockController({ timeZone: 'Pacific/Midway', elementSelector: '.la-clocks' }).start();
