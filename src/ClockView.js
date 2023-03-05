@@ -2,6 +2,12 @@ export class ClockView {
 
     elementSelector = null;
 
+    s = null;
+
+    m = null;
+
+    h = null;
+
     constructor({elementSelector}) {
         this.elementSelector = elementSelector;
         const element = document.querySelector(this.elementSelector);
@@ -30,6 +36,14 @@ export class ClockView {
         return elementClock;
     }
 
+    updateState(s, m, h) {
+        const intermediateHourAngle = Math.floor(m / 12) * 6
+
+        this.h = h < 12 ? (h * 30 + intermediateHourAngle) : ((h - 12) * 30 + intermediateHourAngle);
+        this.m = m * 6;
+        this.s = s * 6;
+    }
+
     /**
      *
      * @param {number} s
@@ -41,14 +55,16 @@ export class ClockView {
 
         if (element === null) throw new Error(`Element "${this.elementSelector}" not found`);
 
+        this.updateState(s, m, h);
+
         let hoursElement = this.getOrCreateArrowElement(element, '.hours-arrow');
-        hoursElement.style.transform = `rotate(${h}deg)`;
+        hoursElement.style.transform = `rotate(${this.h}deg)`;
 
         let minutesElement = this.getOrCreateArrowElement(element, '.minutes-arrow');
-        minutesElement.style.transform = `rotate(${m}deg)`;
+        minutesElement.style.transform = `rotate(${this.m}deg)`;
 
         let secondsElement = this.getOrCreateArrowElement(element, '.seconds-arrow');
-        secondsElement.style.transform = `rotate(${s}deg)`;
+        secondsElement.style.transform = `rotate(${this.s}deg)`;
 
     }
 }

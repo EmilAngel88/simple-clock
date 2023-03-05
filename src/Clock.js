@@ -7,14 +7,10 @@ export class ClockController {
 
   timeZone = null;
 
-  typeClock = '';
-
-  constructor({ timeZone, view, typeClock }) {
+  constructor({ timeZone, view }) {
     this.view = view;
 
     this.timeZone = timeZone;
-
-    this.typeClock = typeClock;
   }
 
   getCurrentTime = () => {
@@ -24,28 +20,10 @@ export class ClockController {
     const m = currentTime.format('mm');
     const h = currentTime.format('HH');
 
-    if(this.typeClock === 'analog') {
-      this.updateState(s, m, h);
-    } else if (this.typeClock === 'digital') {
-      this.view.render(s, m, h);
-    } else {
-      throw new Error('Incorrect type of clock');
-    }
-  }
-
-  updateState(s, m, h) {
-    const intermediateHourAngle = Math.floor(m / 12) * 6
-
-      const hh = h < 12 ? (h * 30 + intermediateHourAngle) : ((h - 12) * 30 + intermediateHourAngle);
-      const mm = m * 6;
-      const ss = s * 6;
-
-    this.view.render(ss, mm, hh);
+    this.view.render(s, m, h);
   }
 
   start() {
-    if (!this.typeClock) throw new Error('Type of clock is not defined');
-
     setInterval(this.getCurrentTime, 1000);
   }
 }
