@@ -2,12 +2,18 @@ export class ClockView {
 
     elementSelector = null;
 
-    constructor(elementSelector) {
+    constructor({elementSelector}) {
         this.elementSelector = elementSelector;
         const element = document.querySelector(this.elementSelector);
         element.classList.add('clock');
     }
 
+    /**
+     * Функция дл создания стрелки
+     * @param {HTMLElement} rootElement
+     * @param {string} selector
+     * @returns {HTMLElement}
+     */
     getOrCreateArrowElement(rootElement, selector) {
         if (!selector) throw new Error('Selector is empty');
 
@@ -24,6 +30,12 @@ export class ClockView {
         return elementClock;
     }
 
+    /**
+     *
+     * @param {number} s
+     * @param {number} m
+     * @param {number} h
+     */
     render(s, m, h) {
         const element = document.querySelector(this.elementSelector);
 
